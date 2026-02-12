@@ -47,7 +47,6 @@
                 data: values,
             });
         } catch (e) {
-            console.error(e);
             if (e.status === 422) {
                 actions.setErrors(e.response.data.errors);
             }
