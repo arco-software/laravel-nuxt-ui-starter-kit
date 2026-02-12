@@ -81,7 +81,7 @@
             </Field>
         </div>
         <div class="flex h-full flex-col justify-end">
-            <UButton class="w-full" label="Convert" icon="i-lucide-rocket" type="submit" />
+            <UButton class="w-full" label="Convert" icon="i-lucide-rocket" type="submit" :loading="loading" />
         </div>
     </form>
 </template>
