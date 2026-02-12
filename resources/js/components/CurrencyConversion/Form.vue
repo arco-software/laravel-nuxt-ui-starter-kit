@@ -1,6 +1,7 @@
 <script setup lang="js">
     import FormLabel from '@/components/form/Label.vue';
     import FormMessage from '@/components/form/Message.vue';
+    import apiCall from '@/lib/apiCall';
     import { toTypedSchema } from '@vee-validate/zod';
     import { Field, useForm } from 'vee-validate';
     import * as z from 'zod';
@@ -20,6 +21,8 @@
         },
     ];
 
+    const loading = ref(false);
+
     const formSchema = toTypedSchema(
         z.object({
             amount: z.coerce.number().min(0).multipleOf(0.01),
@@ -37,7 +40,21 @@
         },
     });
 
-    const onSubmit = handleSubmit(async (values, actions) => {});
+    const onSubmit = handleSubmit(async (values, actions) => {
+        try {
+            loading.value = true;
+            const response = await apiCall('convert-currency', 'post', {
+                data: values,
+            });
+        } catch (e) {
+            console.error(e);
+            if (e.status === 422) {
+                actions.setErrors(e.response.data.errors);
+            }
+        } finally {
+            loading.value = false;
+        }
+    });
 </script>
 
 <template>
@@ -64,7 +81,7 @@
             </Field>
         </div>
         <div class="flex h-full flex-col justify-end">
-            <UButton class="w-full" label="Convert" icon="i-lucide-rocket" />
+            <UButton class="w-full" label="Convert" icon="i-lucide-rocket" type="submit" />
         </div>
     </form>
 </template>
