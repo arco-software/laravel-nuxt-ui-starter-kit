@@ -21,6 +21,8 @@
         },
     ];
 
+    const emits = defineEmits(['success']);
+
     const loading = ref(false);
 
     const formSchema = toTypedSchema(
@@ -35,7 +37,7 @@
         validationSchema: formSchema,
         initialValues: {
             amount: 1,
-            fromCurrency: 'GBP',
+            fromCurrency: 'EUR',
             toCurrency: 'USD',
         },
     });
@@ -43,9 +45,10 @@
     const onSubmit = handleSubmit(async (values, actions) => {
         try {
             loading.value = true;
-            const response = await apiCall('convert-currency', 'post', {
+            const { data } = await apiCall('convert-currency', 'post', {
                 data: values,
             });
+            emits('success', data);
         } catch (e) {
             if (e.status === 422) {
                 actions.setErrors(e.response.data.errors);
@@ -80,7 +83,7 @@
             </Field>
         </div>
         <div class="flex h-full flex-col justify-end">
-            <UButton class="w-full" label="Convert" icon="i-lucide-rocket" type="submit" :loading="loading" />
+            <UButton class="w-full cursor-pointer justify-center" label="Convert" icon="i-lucide-rocket" type="submit" :loading="loading" />
         </div>
     </form>
 </template>

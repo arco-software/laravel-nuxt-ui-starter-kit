@@ -11,6 +11,7 @@ declare module 'vue' {
     Form: typeof import('./resources/js/components/CurrencyConversion/Form.vue')['default']
     Label: typeof import('./resources/js/components/form/Label.vue')['default']
     Message: typeof import('./resources/js/components/form/Message.vue')['default']
+    Result: typeof import('./resources/js/components/CurrencyConversion/Result.vue')['default']
     UButton: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/Button.vue')['default']
     UInputNumber: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/InputNumber.vue')['default']
     USelect: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/Select.vue')['default']
