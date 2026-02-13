@@ -25,12 +25,12 @@ class CurrencyConversionRequest extends FormRequest
         return [
             'fromCurrency' => [
                 'required',
-                Rule::in(config('currencies')),
+                Rule::in(config('currencies.supported-currencies')),
                 'different:toCurrency',
             ],
             'toCurrency' => [
                 'required',
-                Rule::in(config('currencies')),
+                Rule::in(config('currencies.supported-currencies')),
                 'different:fromCurrency',
             ],
             'amount' => 'required|numeric|gt:0|multiple_of:0.01',
