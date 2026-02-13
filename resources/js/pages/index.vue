@@ -5,7 +5,6 @@
     const conversionData = ref(undefined);
 
     const handleSuccess = (responseData) => {
-        console.log(responseData);
         conversionData.value = responseData;
     };
 
