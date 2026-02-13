@@ -39,7 +39,7 @@ I wanted to ensure that we can deliver a robust service to users, and one of the
 
 ### Service Provider
 
-I could have probably resolved the currency conversion driver as a service provider, but focused on keeping the diver switchable by passing one as a parameter to 
+I could have probably resolved the currency conversion driver in service provider, but focused on keeping the diver switchable by passing one as a parameter to 
 
 ### DTOs
 
