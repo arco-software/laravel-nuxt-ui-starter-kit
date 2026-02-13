@@ -35,20 +35,28 @@ I'm conscious that API usage can be expensive, and if there's no update on the p
 
 I wanted to ensure that we can deliver a robust service to users, and one of the ways that I hope to achieve that is by providing different options when it comes to the exchange rate serivce that we use behind the scenes. For instance if one service is found to be better for our business purposes, it should be easy to create a driver for that API and make the switch to that new service.
 
-### To Do
+## To Do
 
-#### DTOs
+### Service Provider
+
+I could have probably resolved the currency conversion driver as a service provider, but focused on keeping the diver switchable by passing one as a parameter to 
+
+### DTOs
 
 It'd be nice to have had more time to formalise our API's response rather than just passing back a cobbled-together array.
 
-#### Single Source of Truth
+### Single Source of Truth
 
 It'd have been nice to spend a bit of time crafting a way for the front and the backend to draw the supported currencies from a single list, rather than separating them out into separate lists for the front and backend like I did.
 
-#### Make better error message for Fixer API limitations
+### Make better error message for Fixer API limitations
 
 The free tier of the Fixer API only allows for conversion from euros (EUR). At the minute my error handling here is pretty basic - I should likely remove the option in the f/e to convert from anything other than euros, but the most likely production scenario is that I'd pay to consume the conversion API and then have access to other "base" currencies.
 
-#### F/E type issues
+### F/E type issues
 
 I used vee-validate components to deal with form error handling. It's throwing type warnings. If I had more time I'd dig into these and figure out the issue.
+
+### Tests
+
+I could have written some unit tests to check that the drivers were working as expected - however I didn't follow through on this due to time constraints and given the dependence on a 3rd party API (automated tests would have chomped through the API request allowance).
