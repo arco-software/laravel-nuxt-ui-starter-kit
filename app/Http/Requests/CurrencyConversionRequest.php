@@ -10,8 +10,8 @@ class CurrencyConversionRequest extends FormRequest
     protected function prepareForValidation(): void
     {
         $this->merge([
-            'fromCurrency' => strtolower($this->fromCurrency),
-            'toCurrency' => strtolower($this->toCurrency),
+            'fromCurrency' => strtoupper($this->fromCurrency),
+            'toCurrency' => strtoupper($this->toCurrency),
         ]);
     }
 
