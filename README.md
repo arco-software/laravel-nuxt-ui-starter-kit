@@ -45,9 +45,4 @@ It'd be nice to have had more time to formalise our API's response rather than j
 
 It'd have been nice to spend a bit of time crafting a way for the front and the backend to draw the supported currencies from a single list, rather than separating them out into separate lists for the front and backend like I did.
 
-#### F/E Dependencies
-
-I'm aware that there are some f/e dependency issues which need resolving.
-
-
 
